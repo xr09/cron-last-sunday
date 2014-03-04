@@ -9,7 +9,7 @@ Install
 
 Copy run-if-today to /usr/bin/, be careful overwriting anything.
 
-cp -i run-if-today /usr/bin/
+    cp -i run-if-today /usr/bin/
 
 
 Usage
