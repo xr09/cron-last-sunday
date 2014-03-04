@@ -29,11 +29,11 @@ Sun, Mon, Tue, Wed, Thu, Fri, Sat
 
 
 
-Using this is rather simple, the script "run-if-today" evaluates its parameters and returns true or false 'a la bash' i.e. 0 or 1, then with the && operator we use it to execute tasks with cron.
+Using this is rather simple, the script "run-if-today" evaluates its parameters and returns true or false 'a la bash' i.e. 0 or 1, then with the && operator we use it to execute tasks with cron, like this:
 
-30 6 * * 6 root run-if-today 1 Sat && /root/myfirstsaturdaybackup.sh
+	30 6 * * 6 root run-if-today 1 Sat && /root/myfirstsaturdaybackup.sh
 
 
-If run-if-today return 1 (false in Bash) then && will stop the operation and nothing happens.
+If run-if-today returns 1 (false in Bash) then the && (and) check will stop the operation and nothing happens.
 
-You could use a * instead of 6 for the day of week, the script checks for both to be saturday and first 7 days, but in order to execute it as less as posible then set it.
+You could use a * instead of 6 for the day of week, the script checks for both to be saturday and within the date range of the desired week, but in order to execute this code at least as possible it's recommended to fix a weekday so it runs mostly 4 or 5 times.
