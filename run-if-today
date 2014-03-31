@@ -66,8 +66,8 @@ case "$1" in
     exit 0
     
     # and that's how you get the last week date range junior!
-    # 	hmm, but dad we now use python ans is pretty simple..
-    # shush, now I'll teach you to make a c compiler with nothing else than a toothbrush
+    # 	hmm, but dad we now use python... is pretty simple..
+    # shush, now I'll teach you to make a c compiler with some string and a toothbrush
     # 	here we go again.. :/
   fi  
 ;;
