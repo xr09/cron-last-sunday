@@ -26,7 +26,7 @@ WEEK_DAY=${ARRAY[3]}
 
 # If is not that day of the week don't even bother running all the
 # cool checks.
-if [ $WEEK_DAY != $2 ]
+if [ $WEEK_DAY != ${2:0:3} ]
 then
 	exit 1
 fi
@@ -34,10 +34,10 @@ fi
 # Ok, it's that day, let's run some fancy code.
 
 # Which week in the month are we dealing with?
-case "$1" in
+case "${1:0:1}" in
 	[1-5])
 		# Plain old nth day code.
-		MIN_DAY=$[ 1 + $[ 7 * $[ $1 - 1 ] ] ]
+		MIN_DAY=$[ 1 + $[ 7 * $[ ${1:0:1} - 1 ] ] ]
 		MAX_DAY=$[ $MIN_DAY + 7 ]
 
 		if [ $TODAY -ge $MIN_DAY ] && [ $TODAY -lt $MAX_DAY ]
