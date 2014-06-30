@@ -54,6 +54,7 @@ case "$1" in
 				# Ah evil February we meet again.
 				# First we assume it's a normal February.
 				LAST_DAY=28
+
 				# Then we test if this is a leap year.
 				if [ $(date -d "$YEAR-02-29" > /dev/null 2>&1) ]
 				then
