@@ -81,6 +81,10 @@ case "$1" in
 			#	Here we go again... :/
 		fi
 		;;
+	*)
+		echo "$0: Unknown argument. Was expecting: 1, 2, 3, 4, 5, l or L"
+		exit 2
+		;;
 esac
 
 # Not the right day, maybe next time.
