@@ -18,17 +18,20 @@
 
 #set -e -x
 
+ARRAY=( $(date "+%Y %m %d %a") )
+YEAR=${ARRAY[0]}
+MONTH=${ARRAY[1]}
+TODAY=${ARRAY[2]}
+WEEK_DAY=${ARRAY[3]}
+
 # If is not that day of the week don't even bother running all the
 # cool checks.
-if [ $(date "+%a") != $2 ]
+if [ $WEEK_DAY != $2 ]
 then
 	exit 1
 fi
 
 # Ok, it's that day, let's run some fancy code.
-
-# You'll need this, that's for sure.
-TODAY=$(date "+%d")
 
 # Which week in the month are we dealing with?
 case "$1" in
@@ -44,7 +47,6 @@ case "$1" in
 		fi
 		;;
 	"l" | "L")
-		MONTH=$(date "+%m")
 		# April, June, September and November have 30 days.
 		# All others have 31 except February, careful with that one..
 		case $MONTH in
@@ -53,7 +55,6 @@ case "$1" in
 				# First we assume it's a normal February.
 				LAST_DAY=28
 				# Then we test if this is a leap year.
-				YEAR=$(date "+%Y")
 				if [ $(date -d "$YEAR-02-29" > /dev/null 2>&1) ]
 				then
 					# It's a leap year, we almost fell for that one.
