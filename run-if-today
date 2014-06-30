@@ -28,49 +28,50 @@ fi
 # Ok, it's that day, let's run some fancy code.
 
 # You'll need this, that's for sure.
-today=$(date "+%d")
+TODAY=$(date "+%d")
 
 # Which week in the month are we dealing with?
 case "$1" in
 	[1-5])
 		# Plain old nth day code.
-		minday=$[ 1 + $[ 7 * $[ $1 - 1 ] ] ]
-		maxday=$[ $minday + 7 ]
+		MIN_DAY=$[ 1 + $[ 7 * $[ $1 - 1 ] ] ]
+		MAX_DAY=$[ $MIN_DAY + 7 ]
 
-		if [ $today -ge $minday ] && [ $today -lt $maxday ]
+		if [ $TODAY -ge $MIN_DAY ] && [ $TODAY -lt $MAX_DAY ]
 		then
 			# Green light, fire at will.
 			exit 0
 		fi
 		;;
 	"l" | "L")
-		month=$(date "+%m")
+		MONTH=$(date "+%m")
 		# April, June, September and November have 30 days.
 		# All others have 31 except February, careful with that one..
-		case $month in
+		case $MONTH in
 			"02")
 				# Ah evil February we meet again.
 				# First we assume it's a normal February.
-				lastday=28
+				LAST_DAY=28
 				# Then we test if this is a leap year.
-				year=$(date "+%Y")
-				if [ $(date -d "$year-02-29" > /dev/null 2>&1) ]
+				YEAR=$(date "+%Y")
+				if [ $(date -d "$YEAR-02-29" > /dev/null 2>&1) ]
 				then
 					# It's a leap year, we almost fell for that one.
-					lastday=29
+					LAST_DAY=29
 				fi
 				;;
 			"04" | "06" | "09" | "11")
-				lastday=30
+				LAST_DAY=30
 				;;
 			*)
-				lastday=31
+				LAST_DAY=31
 				;;
 		esac
 
-		startlastweek=$[ $lastday - 6 ]
+		# 7 days from the end of the month.
+		START_OF_LAST_WEEK=$[ $LAST_DAY - 6 ]
 
-		if [ $today -ge $startlastweek ] && [ $today -le $lastday ]
+		if [ $TODAY -ge $START_OF_LAST_WEEK ] && [ $TODAY -le $LAST_DAY ]
 		then
 			# This is last week of the month.
 			exit 0
