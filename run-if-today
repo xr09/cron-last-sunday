@@ -16,6 +16,8 @@
 #	5	29-lastday	(you probably need [L]ast week instead)
 #	L	(lastday-6)-lastday
 
+#set -e -x
+
 # If is not that day of the week don't even bother running all the
 # cool checks.
 if [ $(date "+%a") != $2 ]
