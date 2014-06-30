@@ -32,7 +32,7 @@ today=$(date "+%d")
 
 # First of all: Is it one of those "last Friday" tasks?
 case "$1" in
-	"l" | "L" )
+	"l" | "L")
 		month=$(date "+%m")
 		# April, June, September and November have 30 days.
 		# All others have 31 except February, careful with that one..
@@ -40,7 +40,7 @@ case "$1" in
 			"04" | "06" | "09" | "11")
 				lastday=30
 				;;
-			"02" )
+			"02")
 				year=$(date "+%Y")
 				# Ah evil February we meet again, is this a leap year?
 				if [ $(date -d "$year-02-29" > /dev/null 2>&1) ]
@@ -52,7 +52,7 @@ case "$1" in
 					lastday=28
 				fi
 				;;
-			* )
+			*)
 				lastday=31
 				;;
 		esac
