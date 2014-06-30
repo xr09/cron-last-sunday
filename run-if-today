@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# run-if-today
+# Run a cron task the first, nth or last weekday of the month.
+#
+# Based on code from:
+# https://github.com/xr09/cron-last-sunday
+#
+# This version:
+# https://github.com/respencer/cron-last-sunday
+#
+# Released under the MIT license.
+
 # Examples:
 #
 # 1st Monday	--> run-if-today 1 "Mon"
