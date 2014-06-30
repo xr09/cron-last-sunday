@@ -30,27 +30,38 @@ fi
 # You'll need this, that's for sure.
 today=$(date "+%d")
 
-# First of all: Is it one of those "last Friday" tasks?
+# Which week in the month are we dealing with?
 case "$1" in
+	[1-5])
+		# Plain old nth day code.
+		minday=$[ 1 + $[ 7 * $[ $1 - 1 ] ] ]
+		maxday=$[ $minday + 7 ]
+
+		if [ $today -ge $minday ] && [ $today -lt $maxday ]
+		then
+			# Green light, fire at will.
+			exit 0
+		fi
+		;;
 	"l" | "L")
 		month=$(date "+%m")
 		# April, June, September and November have 30 days.
 		# All others have 31 except February, careful with that one..
 		case $month in
-			"04" | "06" | "09" | "11")
-				lastday=30
-				;;
 			"02")
+				# Ah evil February we meet again.
+				# First we assume it's a normal February.
+				lastday=28
+				# Then we test if this is a leap year.
 				year=$(date "+%Y")
-				# Ah evil February we meet again, is this a leap year?
 				if [ $(date -d "$year-02-29" > /dev/null 2>&1) ]
 				then
 					# It's a leap year, we almost fell for that one.
 					lastday=29
-				else
-					# It's a normal February.
-					lastday=28
 				fi
+				;;
+			"04" | "06" | "09" | "11")
+				lastday=30
 				;;
 			*)
 				lastday=31
@@ -58,6 +69,7 @@ case "$1" in
 		esac
 
 		startlastweek=$[ $lastday - 6 ]
+
 		if [ $today -ge $startlastweek ] && [ $today -le $lastday ]
 		then
 			# This is last week of the month.
@@ -70,16 +82,6 @@ case "$1" in
 		fi
 		;;
 esac
-
-# Plain old nth day code.
-minday=$[ 1 + $[ 7 * $[ $1 - 1 ] ] ]
-maxday=$[ $minday + 7 ]
-
-if [ $today -ge $minday ] && [ $today -lt $maxday ]
-then
-	# Green light, fire at will.
-	exit 0
-fi
 
 # Not the right day, maybe next time.
 exit 1
