@@ -3,7 +3,7 @@ cron-last-sunday
 
 Cron Last Sunday is the solution for those picky admins that always wanted to run a task the third Thursday of the Month, or maybe the first Monday, whatever.
 
-Read a short intro at Manuel "xr09" Gutierrez's blog: http://xr09.github.io/cron-scheduling-for-the-fancy.html
+Read a short [intro](http://xr09.github.io/cron-scheduling-for-the-fancy.html) at my blog.
 
 
 Install
