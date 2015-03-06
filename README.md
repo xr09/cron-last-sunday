@@ -17,6 +17,10 @@ Or /usr/local/bin/ for use by all system users:
 
     cp -av run-if-today /usr/local/bin/
 
+Remember to give exec permissions:
+
+    chmod +x run-if-today
+
 
 Usage
 =====
