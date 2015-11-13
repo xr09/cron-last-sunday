@@ -32,9 +32,9 @@ MONTH=${ARRAY[1]}
 TODAY=${ARRAY[2]}
 WEEK_DAY=${ARRAY[3]}
 
-# If is not that day of the week don't even bother running all the
+# If the day is provided but it is not that day of the week, don't even bother running all the
 # cool checks.
-if [ $WEEK_DAY != ${2:0:3} ]
+if [ ! -z "$2" ] && [ $WEEK_DAY != ${2:0:3} ]
 then
 	exit 1
 fi
