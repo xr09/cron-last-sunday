@@ -44,7 +44,11 @@ If run-if-today returns 1 (false in Bash) then the && (and) will stop the operat
 
 You could use a * instead of 6 for the day of week, the script checks if it's Saturday and within the date range of the desired week, but in order to execute this code as little as possible it's recommended to fix a weekday so it runs at most 4 or 5 times a month.
 
-Or you could possibly completely omit the second parameter and inherit it from cron since we are already specifying parameter. For example:
+
+Simpler usage (recommended)
+===========================
+
+You could possibly completely omit the second parameter and inherit it from cron since we are already specifying a weekday parameter. For example:
 
 
     30 6 * * 6 root run-if-today 1 && /root/myfirstsaturdaybackup.sh
