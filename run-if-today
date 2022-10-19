@@ -26,7 +26,7 @@
 
 #set -e -x
 
-ARRAY=( $(date "+%Y %m %d %a") )
+ARRAY=( $(LC_TIME=en_US.UTF-8 date "+%Y %m %d %a") )
 YEAR=${ARRAY[0]}
 MONTH=${ARRAY[1]}
 TODAY=${ARRAY[2]}
